@@ -1,0 +1,105 @@
+h1 {
+    color: #40bcf4;
+}
+
+body {
+    background-color: rgb(25, 28, 39);
+    color: rgba(255, 255, 255, 0.767);
+    text-align: center;
+    font-family: 'Courier New';
+    font-size: 15px;
+}
+
+hr {
+    width: 100%;
+}
+
+input[type="button"], textarea {
+    background-color: rgb(15, 28, 48);
+}
+
+input[type="button"], text {
+    color: rgba(255, 255, 255, 0.767);
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
+}
+
+input[type="submit"], textarea {
+    background-color: rgb(15, 28, 48);
+}
+
+input[type="submit"], text {
+    color: rgba(255, 255, 255, 0.767);
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+select {
+    background-color: rgb(15, 28, 48);
+    color: rgba(255, 255, 255, 0.767);
+}
+
+.diary-link {
+    text-align: right;
+    margin-right: 5%;
+}
+
+.film-title-box {
+    height: 20%;
+    position: relative;
+}
+
+.film-title {
+    height: 15%;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    right: 30%;
+    margin-left: -25%;
+    margin-right: -25%;
+}
+
+.film-rating {
+    margin-top: 5px;
+}
+
+.film-rating::after {
+    content: '\2605';
+}
+
+.film-year {
+    margin-bottom: 8px;
+}
+
+.film-date {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.film-poster {
+    border-style: none;
+}
+
+.column {
+    position: relative;
+    float: left;
+    width: 18.98%;
+    height: 390px;
+    margin: 5px;
+    padding-bottom: 25px;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(15, 28, 48);
+    transition:transform 0.2s ease;
+    user-select: none;
+}
+
+.column:hover {
+    background-color: rgb(39, 56, 70);;
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+}

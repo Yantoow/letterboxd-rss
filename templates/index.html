@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %} Letterboxd RSS {% endblock %}
+
+{% block subtitle %}
+<h1>Letterboxd RSS</h1>
+{% endblock %}
+
+{% block content %}
+<!-- Form for the username -->
+<form method="POST">
+    <p>Enter your Letterboxd username:</p>
+    <p><input type="text" name="username" autocomplete="off"/></p>
+    <p><input type="submit" value="Go!" /></p>
+</form>
+
+{% set sorting_methods = ["Watched Date", "Title", "Rating", "Release Year"] %}
+
+{% if username: %}
+    <h2>Movies for: {{username}}</h2>
+
+    <!-- Form for sorting the movies -->
+    <form method="GET">
+        Sort by: <select name="sorting">
+            {% for method in sorting_methods: %}
+                {% if request.args['sorting'] == method %}
+                    <option value="{{method}}" selected>{{method}}</option>
+                {% else: %}
+                <option value="{{method}}">{{method}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Sort">
+    </form>
+{% endif %}
+
+<br> <br>
+
+<!-- Display the movies in rows and columns -->
+<div class="row">
+    {% for mv in movie_list: %}
+        <div class="column">
+            <!-- Title -->
+            <div class="film-title-box">
+                <div class="film-title">
+                    {% if mv.title %}
+                        {{mv.title}}
+                    {% else: %}
+                        -
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Release Year -->
+            <div class="film-year">
+                {% if mv.year %}
+                    {{mv.year}}
+                {% else: %}
+                    -
+                {% endif %}
+            </div>
+
+            <!-- Poster -->
+            <div class="film-poster">
+                {% if mv.poster: %}
+                    <img src={{mv.poster[0]}} width=150 height=225>
+                {% else: %}
+                    <img src="https://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg" width=150 height=225>
+                {% endif %}
+            </div>
+
+            <!-- Watched Date -->
+            <div class="film-date">
+                {% if mv.watched_date: %}
+                    {{mv.watched_date}}
+                {% else: %}
+                    -
+                {% endif %}
+                {% if mv.rewatch == 'Yes' %}
+                    &#x27F2;
+                {% endif %}
+            </div>
+
+            <!-- Rating -->
+            <div class="film-rating">
+                {% if mv.rating: %}
+                    {{mv.rating}}
+                {% else: %}
+                    -
+                {% endif %}
+            </div>
+
+            <!-- Link to diary entry -->
+            <div class="diary-link">
+                {% if mv.link: %}
+                    <input type="button" onclick="location.href='{{mv.link[0]}}'" value="&#x21AA;" title="Go to entry">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
