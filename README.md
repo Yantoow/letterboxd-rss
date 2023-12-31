@@ -1,5 +1,5 @@
 # Letterboxd RSS
-Generates a quick feed for a Letterboxd user via their RSS page.
+Generates a quick feed for a Letterboxd user from their RSS page.
 
 ### Usage
 1. Run app.py
